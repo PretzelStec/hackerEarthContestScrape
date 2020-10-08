@@ -1,0 +1,25 @@
+{
+  "name": "hackerearthcontestscrape",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/PretzelStec/hackerEarthContestScrape.git"
+  },
+  "bugs": {
+    "url": "https://github.com/PretzelStec/hackerEarthContestScrape/issues"
+  },
+  "homepage": "https://github.com/PretzelStec/hackerEarthContestScrape#readme",
+  "description": "",
+  "dependencies": {
+    "cheerio": "^1.0.0-rc.3",
+    "request": "^2.88.2",
+    "request-promise": "^4.2.6"
+  }
+}
