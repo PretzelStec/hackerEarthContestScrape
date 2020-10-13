@@ -43,15 +43,17 @@ URL = "https://www.hackerearth.com/challenges/";
     // data retrieval
 
     // for each "challenge content"(challenge) within the "ongoing challenge list" 
-    $('div[class ^="ongoing challenge-list"] div[class^="challenge-content"]').each((i, elms) => {
+    $('div[class ^="ongoing challenge-list"] a[class ="challenge-card-wrapper challenge-card-link"]').each((i, elms) => {
         // grab the title, which is child of content and challenge name. (2 layers deep)
         const title =  $(elms)
-        .children('div[class^="challenge-name"]')
+        .find('div[class^="challenge-name"]')
         .children()
         .text(); // grab text
 
+        const url = $(elms).attr('href');
+
         // push to ongoing array
-        ongoing.push({title}); 
+        ongoing.push({title, url}); 
     });
 
     console.log({upcoming, ongoing});
