@@ -1,3 +1,6 @@
+// The urls stored in the href for the challenge cards is not consistent
+// some show full urls some do not. This will have to be fixed
+
 const request = require('request-promise');
 const cheerio = require('cheerio');
 
@@ -18,23 +21,26 @@ URL = "https://www.hackerearth.com/challenges/";
     // upcoming challenges.. form = [{title, date}]
 
     // for each "challenge content"(challenge) within the "upcoming challenge list"
-    $('div[class ^="upcoming challenge-list"] div[class^="challenge-content"]').each((i, elms) => {
+    $('div[class ^="upcoming challenge-list"] a[class ="challenge-card-wrapper challenge-card-link"]').each((i, elms) => {
 
         // grab the title, which is child of content and challenge name. 
         // (2 layers deep, so, 2 child calls)
         const title =  $(elms)
-        .children('div[class^="challenge-name"]')
+        .find('div[class^="challenge-name"]')
         .children()
         .text();
 
         // grab the date.. find div enclosing date. return text
         const date = $(elms)
-        .children('div[class^="challenge-list-meta"]')
         .find('div[class^="date"]')
         .text();
 
+        
+        //get the href(link) that each challenge card has to the competition
+        const url = $(elms).attr('href');
+
         // push title and date tot upcoming array
-        upcoming.push({title, date});
+        upcoming.push({title, date, url});
     });
 
 
@@ -50,11 +56,21 @@ URL = "https://www.hackerearth.com/challenges/";
         .children()
         .text(); // grab text
 
+        //get the href(link) that each challenge card has to the competition
         const url = $(elms).attr('href');
 
         // push to ongoing array
         ongoing.push({title, url}); 
+
+        for( x of ongoing){
+            if (x['title'] == ''){
+                console.log('empty');
+            }
+        }
     });
+
+    // clean up the data
+
 
     console.log({upcoming, ongoing});
     //console.log(ongoing);
