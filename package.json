@@ -1,10 +1,10 @@
 {
   "name": "hackerearthcontestscrape",
   "version": "1.0.0",
-  "main": "index.js",
+  "main": "HEScrape.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node index.js"
+    "start": "node HEScrape.js"
   },
   "author": "",
   "license": "ISC",

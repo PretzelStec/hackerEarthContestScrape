@@ -6,7 +6,8 @@ const cheerio = require('cheerio');
 
 URL = "https://www.hackerearth.com/challenges/";
 
-(async () => {
+
+exports.getChallenges = (async () => {
 
     // get the response from our URL from hackerearth
     const response = await request(URL);
@@ -61,17 +62,11 @@ URL = "https://www.hackerearth.com/challenges/";
 
         // push to ongoing array
         ongoing.push({title, url}); 
-
-        for( x of ongoing){
-            if (x['title'] == ''){
-                console.log('empty');
-            }
-        }
     });
 
     // clean up the data
 
 
-    console.log({upcoming, ongoing});
+    return({upcoming, ongoing});
     //console.log(ongoing);
-})();
+});
